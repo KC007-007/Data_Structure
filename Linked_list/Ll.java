@@ -64,7 +64,9 @@ public class Ll {
 		 case 8 : l.print(head); 
 		          break;
 		           
-		 case 0 : System.exit(0);          
+		 case 0 : System.exit(0);
+                   
+                       
 		         
 		 }
 		}
