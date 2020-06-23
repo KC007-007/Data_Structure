@@ -10,6 +10,7 @@ public class Ll {
 		Linkedlist l =new Linkedlist();
 		Node head=null;		
 		Scanner sc=new Scanner(System.in);
+		Node h;
 		
 		
 		
@@ -22,6 +23,7 @@ public class Ll {
 		 System.out.println("press 6 : for search a node");
 		 System.out.println("press 7 : for middle node ");
 		 System.out.println("press 8 : for print the list");
+		 System.out.println("press 9 : for remove the duplicate element from the list");
 		 System.out.println("press 0 : for exit");
 
 
@@ -38,15 +40,16 @@ public class Ll {
 		        	  System.out.println("list is not empty");
 		          break;
 		          
-		 case 2 :  Node h=l.add(head);	
+		 case 2 :   h=l.add(head);	
 		           head=h;
 		           break;
 		           
-		 case 3 : l.size(head); 
+		 case 3 : int x=l.size(head);
+		          System.out.println("size of list is :"+x);
 		          break;
 		          
-		 case 4 : Node i= l.insert(head); 
-		           head=i;
+		 case 4 :  h= l.insert(head); 
+		           head=h;
 		           break;
 		           
 		 case 5 : Node d=l.del(head);
@@ -63,10 +66,14 @@ public class Ll {
 		        
 		 case 8 : l.print(head); 
 		          break;
-		           
-		 case 0 : System.exit(0);
-                   
-                       
+		          
+		 case 9 : h= l.sortedDelDup(head);
+		          head =h;
+		          break;
+		          
+		          
+		 case 0 : System.out.println("Program has exit | For Execution : RUN the code again");
+			      System.exit(0);          
 		         
 		 }
 		}
@@ -136,7 +143,8 @@ class Linkedlist
 		Scanner sc=new Scanner(System.in);
 		Node p=head;
 		Linkedlist l=new Linkedlist();
-		l.size(head);
+		int x=l.size(head);
+		System.out.println("size of list :"+x);
 		System.out.println("enter the data which want to insert");
 		Node newnode=new Node(sc.nextInt());
 		System.out.println(" enter a position from 1 to (size+1)");
@@ -194,7 +202,7 @@ class Linkedlist
 		System.out.println("mid value is "+" "+p.data);
 	}
 	 
-	void size(Node head)
+	int size(Node head)
 	 {
 		 Node p=head;
 		 int c=0;
@@ -203,7 +211,7 @@ class Linkedlist
 			 p=p.next;
 			 c++;
 		 }
-		 System.out.println("size of linkedlist is =  "+c);
+		return c;
 	 }
 	 
 	void search(Node head,int val)
@@ -222,6 +230,32 @@ class Linkedlist
 		else
 			System.out.println("value not found");
 		
+	}
+	
+	
+	Node sortedDelDup(Node head)
+	{
+		Node p=head;
+		Node q;
+		while(p!=null && p.next!= null)
+		{
+			if(p.data == p.next.data)
+			{
+				q=p.next.next;
+				if(q==null)
+				{
+					p.next=null;
+					break;
+				}
+				p.next=q;
+				
+			}
+			if(p.data != p.next.data )
+				p=p.next;
+				
+		}
+		
+	  return head; 
 	}
 	
 	
