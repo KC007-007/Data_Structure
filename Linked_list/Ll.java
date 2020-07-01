@@ -9,7 +9,7 @@ public class Ll {
 		// TODO Auto-generated method stub
 		Linkedlist l =new Linkedlist();
 		Node head=null;		
-		Scanner sc=new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		Node h;
 		
 		
@@ -103,11 +103,13 @@ class Node
 
 class Linkedlist
 {
+	
 	boolean isEmpty(Node head)
 	{
 		
 		return (head==null);
 	}
+	
 	
 	 Node add(Node head)
 	 {
@@ -149,6 +151,15 @@ class Linkedlist
 		Node newnode=new Node(sc.nextInt());
 		System.out.println(" enter a position from 1 to (size+1)");
 		int location =sc.nextInt();
+		if(location ==1)
+		{
+			p=newnode;
+			p.next=head;
+			head=p;
+			return head;
+		}
+		else
+		{
 		
 		for(int i=1;i<location-1;i++)
 		{
@@ -158,6 +169,7 @@ class Linkedlist
 		p.next=newnode;
 		
 		return head;
+		}
 		
 	}
 	
