@@ -1,4 +1,4 @@
-package linkedlist;
+
 import java.util.*;
 import java.lang.*;
 
@@ -178,20 +178,44 @@ class Linkedlist
 		Node p=head;
 		Node temp;
 		Scanner sc=new Scanner(System.in);
-		System.out.println("enter the location at which data to be delete");
+                Linkedlist l=new Linkedlist();
+                int sz=l.size(head);
+                System.out.println("enter the location at which data to be delete");
 		int location=sc.nextInt();
+                 if(location > sz || location < 1)
+                  {
+                  System.out.println("this position does not exist ");
+                   return head ;
+                  }
+              
+              
+               else
+               {    
+		
+               if(location==1)
+		{
+			temp=p.next;
+			head=temp;
+			p=null;
+			
+		}
+		else
+		{
+		
 		for(int i=1;i<location-1;i++)
 		{
-			
-			p=p.next;
+		     p= p.next;
 		}
 		temp=p.next;
 		p.next=temp.next;
 		temp=null;
 		
 		
-		return head;
+		}
+             return head ;
+              }
 	}
+	
 	void print(Node head)
 	{
 		Node p=head;
