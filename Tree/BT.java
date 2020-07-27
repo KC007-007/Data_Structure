@@ -5,7 +5,7 @@
 // 1. public class BT - for main()
 // 2. class Node - Using singly LinkedList-- for Queue Node-
 // 3. class Queue - using  Singly linkedlist for queue - FUNCTIONS-(enqueue(),dequeue(),isEmpty(),print())
-// 4. class BinaryTree - for Making Tree - FUNCTIONS-(create(),preOrder(),postOrder(),levelOrder())
+// 4. class BinaryTree - for Making Tree - FUNCTIONS-(create(),preOrder(),postOrder(),levelOrder(),countNode(),height(),degTwoNode())
 
 import java.util.*;
 import java.lang.*;
@@ -115,6 +115,52 @@ BinaryTree r;
  }
  }
  
+ int countNode(BinaryTree root)
+ {
+	 int x;
+	 int y;
+	 if(root != null)
+	 {
+	  x=countNode(root.l);
+	  y=countNode(root.r);
+	  return x+y+1;
+	 }
+	 return 0;
+	 
+ }
+
+int degTwoNode(BinaryTree root)
+ {
+	 int x;
+	 int y;
+	 if(root != null)
+	 {
+	  x=degTwoNode(root.l);
+	  y=degTwoNode(root.r);
+	  if(root.l !=null && root.r!=null)
+	     return x+y+1;
+	 else 
+		 return x+y;
+	  
+	 }
+	 return 0;
+	 
+ }
+
+int height(BinaryTree root)
+{
+	int x;
+	int y;
+	if(root==null)
+		return 0;
+	 x=height(root.l);
+	 y=height(root.r);
+	 if(x>y)
+		 return x+1;
+	 else
+		 return y+1;
+	 
+}	
  
 }
 		 
@@ -140,6 +186,10 @@ public class BT
 		System.out.print("LEVELORDER = ");
 		bt.levelOrder(r);
 		System.out.println();
+		System.out.println("NO. OF NODES         = " + bt.countNode(r));
+		
+		System.out.println("No. two degree Nodes = "+ bt.degTwoNode(r));
+		System.out.println("Height Of Tree       = "+ bt.height(r));
 		
 	}
 }
